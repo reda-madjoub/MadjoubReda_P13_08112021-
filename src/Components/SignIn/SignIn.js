@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import 'Components/SignIn/SignIn.css'
 
 const SignIn = () => {
@@ -20,8 +21,8 @@ const SignIn = () => {
                         <input type="checkbox" id="remember-me" />
                         <label for="remember-me">Remember me</label>
                     </div>
-                    <a href="./user.html" class="sign-in-button">Sign In</a>
-                    SHOULD BE THE BUTTON BELOW 
+                    {/* <Link to='/' class="sign-in-button">Sign In</Link> */}
+                    {/* SHOULD BE THE BUTTON BELOW  */}
                     <button class="sign-in-button">Sign In</button> 
                 </form>
             </section>

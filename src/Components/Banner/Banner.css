@@ -22,6 +22,10 @@
   .main-nav-item:hover {
     text-decoration: underline;
   }
+
+  .main-nav-item > i {
+    padding-right: 10px;
+  }
   
   .main-nav-logo {
     display: flex;

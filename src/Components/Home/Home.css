@@ -1,7 +1,4 @@
-.main {
-    flex: 1;
-  }
-  
+
   .bg-dark {
     background-color: #12002b;
   }
@@ -154,7 +151,7 @@
   }
   
 
-  
+/*   
   .account {
     display: flex;
     justify-content: space-between;
@@ -230,4 +227,4 @@
       width: 200px;
     }
   }
-  
+   */

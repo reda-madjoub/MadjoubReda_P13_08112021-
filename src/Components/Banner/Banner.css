@@ -17,6 +17,10 @@
   .main-nav-item {
     text-decoration: none;
     margin-right: 0.5rem;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
   }
   
   .main-nav-item:hover {
@@ -36,4 +40,23 @@
     max-width: 100%;
     width: 200px;
   }
+
+  .loggedIn {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 200px;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .user-loggedIn {
+    width: 70px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .loggedOut {
+    
+  }
+
   

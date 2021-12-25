@@ -1,16 +1,16 @@
 import React from 'react'
 import 'Components/Account/Account.css'
 
-const Account = () => {
+const Account = ({amount}) => {
     return (
-        <section class="account">
-            <div class="account-content-wrapper">
-                <h3 class="account-title">Argent Bank Checking (x8349)</h3>
-                <p class="account-amount">$2,082.79</p>
-                <p class="account-amount-description">Available Balance</p>
+        <section className="account">
+            <div className="account-content-wrapper">
+                <h3 className="account-title">Argent Bank Checking (x8349)</h3>
+                <p className="account-amount">{amount}</p>
+                <p className="account-amount-description">Available Balance</p>
             </div>
-            <div class="account-content-wrapper cta">
-                <button class="transaction-button">View transactions</button>
+            <div className="account-content-wrapper cta">
+                <button className="transaction-button">View transactions</button>
             </div>
         </section>
     )

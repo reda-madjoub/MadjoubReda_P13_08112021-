@@ -1,10 +1,10 @@
 import { createStore, combineReducers } from 'redux';
-import Reducer from 'redux/Reducers/Reducer';
+import Authentification from 'redux/Reducers/Authentification';
 
 // nomage conventionnel "rootReducer"
 // combineReducers permet de mettre dans notre store plusieurs reducers
 const rootReducer = combineReducers({
-    Reducer,
+    Authentification,
 })
 
 const store = createStore(rootReducer)

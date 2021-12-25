@@ -1,0 +1,5 @@
+const LOGIN = 'LOGIN'
+const LOGOUT = 'LOGOUT'
+const UPDATE_NAME = "UPDATE_NAME"
+
+export {LOGIN, LOGOUT, UPDATE_NAME}

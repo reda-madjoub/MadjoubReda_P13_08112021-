@@ -11,6 +11,7 @@ const INITIAL_STATE =  {
 function Authentification( state = INITIAL_STATE, action ) {
     switch (action.type) {
         case LOGIN: {
+            // localStorage.clear()
             return {
                 ...state,
                 token: action.token,

@@ -1,6 +1,6 @@
 .bg-dark {
   padding: 10px 0;
-  height: 90vh;
+  height: fit-content;
   background-color: #12002b;
 }
 

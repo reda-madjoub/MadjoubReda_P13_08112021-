@@ -10,7 +10,9 @@ import { useSelector } from 'react-redux'
 
 const Profile = () => {
     const data = useSelector(state => state)
-    if(data.Authentification.loggedIn === false) return <Navigate to='/login'/>
+    if(data.Authentification.loggedIn === false) {
+        return <Navigate to='/login'/>
+    }
     return (
         <main className="main bg-dark">
             <ProfileEdit/>

@@ -9,7 +9,6 @@ import 'pages/Login/Login.css'
 export const GetUserDetails = (token) => {
 
     const dispatch = useDispatch()
-    console.log(useSelector(state => state))
 
     var myHeaders = new Headers();
     myHeaders.append("Authorization", `Bearer ${token}`);
@@ -22,7 +21,6 @@ export const GetUserDetails = (token) => {
     };
     if(useSelector(state => state.Authentification.loggedIn))
     {
-        console.log('hi');
         fetch(EDIT_PROFILE_URL, requestOptions)
         .then(response => response.json())
         .then(result => {

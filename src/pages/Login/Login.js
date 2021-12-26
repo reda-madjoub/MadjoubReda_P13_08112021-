@@ -33,8 +33,6 @@ const Login = () => {
         e.preventDefault()
         axios.post(LOGIN_URL, userInput)
             .then(response => {
-                localStorage.setItem('token', response.data.body.token)
-                localStorage.setItem('loggedIn', true)
                 dispatch({
                     type: 'LOGIN',
                     token: response.data.body.token,
@@ -48,8 +46,6 @@ const Login = () => {
         
     // ADD FIRSTNAME AND LASTNAME TO GLOBAL STATE
     GetUserDetails(useSelector(state => state.Authentification.token))
-
-    console.log(useSelector(state => state))
     // IF USER NOT LOGIN REDIRECT TO PROFILE PAGE
     if(useSelector(state => state.Authentification.loggedIn)) return <Navigate to="/profile"/>
     

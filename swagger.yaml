@@ -1,0 +1,237 @@
+swagger: '2.0'
+info:
+  title: Bank Argent API documentation
+  description: Possible API endpoints for phase 2 (transactions)
+  version: '1.0.0'
+  termsOfService: 'http://swagger.io/terms/'
+host: localhost:3000
+basePath: /api/v2
+schemes:
+  - http
+paths:
+  /user/{accountId}:
+    get:
+      tags:
+        - User account details
+      summary: user's transactions
+      description: show all user's transactions of the current mounth
+      parameters:
+        - name: Authorization
+          in: header
+          description: Attach Bearer JWT token
+          required: true
+          type: string
+        - name: accountId
+          in: path
+          description: ID of the account user
+          required: true
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: user transactions retrieved Successfully
+          schema:
+            $ref: '#/definitions/Transaction_Response'
+        '400':
+          description: Either `token` or `accountId` are required.
+        '500':
+          description: Internal Server Error
+  /user/{accountId}/{transactionId}:
+    get:
+      tags:
+        - User transaction details
+      summary: transaction details
+      description: retrieve specific information of the transaction
+      parameters:
+        - name: Authorization
+          in: header
+          description: Attach Bearer JWT token
+          required: true
+          type: string
+        - name: accountId
+          in: path
+          description: ID of the account user
+          required: true
+          type: integer
+        - name: transactionId
+          in: path
+          description: ID of the transaction
+          required: true
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: User transaction details retrieved Successfully
+          schema:
+            $ref: '#/definitions/Transaction_Response'
+        '400':
+          description:  One of them `token`, `transactionId` or `accountId` are required.
+        '500':
+          description: Internal Server Error
+  /user/{accountId}/{transactionId}:
+    put:
+      security:
+        - Bearer: []
+      tags:
+        - User transaction details
+      summary: Modify transaction details
+      description: Updating specific transactions informations
+      parameters:
+        - name: Authorization
+          in: header
+          description: Attach Bearer JWT token
+          required: true
+          type: string
+        - name: accountId
+          in: path
+          description: ID of the account user
+          required: true
+          type: integer
+        - name: transactionId
+          in: path
+          description: ID of the transaction
+          required: true
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: transaction informations successfully updated
+          schema:
+            $ref: '#/definitions/Transaction_Updating_Response'
+        '400':
+          description: One of them `token`, `transactionId` or `accountId` are required.
+        '500':
+          description: Internal Server Error
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - User transaction details
+      summary: retrieve transaction details
+      description: retrieve specific transactions informations
+      parameters:
+        - name: Authorization
+          in: header
+          description: Attach Bearer JWT token
+          required: true
+          type: string
+        - name: accountId
+          in: path
+          description: ID of the account user
+          required: true
+          type: integer
+        - name: transactionId
+          in: path
+          description: ID of the transaction
+          required: true
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: transaction informations successfully retrieved
+          schema:
+            $ref: '#/definitions/Transaction_Retrieve_Details_Response'
+        '400':
+          description: One of them `token`, `transactionId` or `accountId` are required.
+        '500':
+          description: Internal Server Error
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+definitions:
+  Transaction:
+    type: object
+    properties:
+      id_transaction:
+        type: number
+        description: transaction unique id
+      date:
+        type: string
+        description: date of transaction
+      amount:
+        type: number
+        description: amount of transaction
+      balance:
+        type: number
+        description: balance of the account after transaction
+  TransactionDetails:
+    type: object
+    properties:
+      id_transaction:
+        type: number
+        description: transaction unique id
+      transactionType:
+        type: string
+        description: transaction type
+      category:
+        type: string
+        description: category of the transaction
+      notes:
+        type: string
+        description: any relevant note user want to add
+  Account:
+    type: object
+    properties:
+      id:
+        type: number
+        description: Id of the user account
+      balance:
+        type: number
+        description: balance of the owner account
+      currency:
+        type: string
+        description: currency
+  Account_Response:
+    type: object
+    properties:
+      status:
+        type: integer
+      message:
+        type: string
+        example: User transactions retrieved succesfully
+      body:
+        type: object
+        items:
+          $ref: '#/definitions/Account'
+  Transaction_Response:
+    type: object
+    properties:
+      status:
+        type: integer
+      message:
+        type: string
+        example: User transaction retrieved succesfully
+      body:
+        type: object
+        items:
+          $ref: '#/definitions/Transaction'
+  Transaction_Updating_Response:
+    type: object
+    properties:
+      status:
+        type: integer
+      message:
+        type: string
+        example: User transaction updated succesfully
+      body:
+        type: object
+        items:
+          $ref: '#/definitions/TransactionDetails'
+  Transaction_Retrieve_Details_Response:
+    type: object
+    properties:
+      status:
+        type: integer
+      message:
+        type: string
+        example: User transaction updated succesfully
+      body:
+        type: object
+        items:
+          $ref: '#/definitions/TransactionDetails'

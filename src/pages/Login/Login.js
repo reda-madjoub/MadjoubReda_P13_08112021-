@@ -29,8 +29,16 @@ const Login = () => {
         })
     }
     
+    const show = (el) => {
+        el.style.display = "block"
+    }
+    const hide = (el) => {
+        el.style.display = "none"
+    }
     const handleSubmit = (e) => {
         e.preventDefault()
+        hide(document.getElementById('failLog'))
+
         axios.post(LOGIN_URL, userInput)
             .then(response => {
                 dispatch({
@@ -40,7 +48,10 @@ const Login = () => {
                 })
                 return response.data.body.token
             })
-            .catch(err => console.error(err))
+            .catch(err =>{
+                show(document.getElementById('failLog'))
+                console.error(err)
+            })
     
         }
         
@@ -48,7 +59,7 @@ const Login = () => {
     GetUserDetails(useSelector(state => state.Authentification.token))
     // IF USER NOT LOGIN REDIRECT TO PROFILE PAGE
     if(useSelector(state => state.Authentification.loggedIn)) return <Navigate to="/profile"/>
-    
+
     return (
         <main className="main bg-dark">
             <section className="sign-in-content">
@@ -67,8 +78,11 @@ const Login = () => {
                         <input type="checkbox" id="remember-me" />
                         <label htmlFor="remember-me">Remember me</label>
                     </div>
-                    {/* <Link to='/' className="sign-in-button">Sign In</Link> */}
                     {/* SHOULD BE THE BUTTON BELOW  */}
+                    <br />
+                    <p id="failLog" style={{color: "red", display: "none"}}>Please fill out credentials</p>
+                    
+                
                     <button className="sign-in-button">Sign In</button> 
                 </form>
             </section>

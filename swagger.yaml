@@ -32,7 +32,7 @@ paths:
         '200':
           description: user transactions retrieved Successfully
           schema:
-            $ref: '#/definitions/Transaction_Response'
+            $ref: '#/definitions/Account_Response'
         '400':
           description: Either `token` or `accountId` are required.
         '500':
@@ -70,7 +70,7 @@ paths:
           description:  One of them `token`, `transactionId` or `accountId` are required.
         '500':
           description: Internal Server Error
-  /user/{accountId}/{transactionId}:
+  /user/{accountId}/transaction/{transactionId}:
     put:
       security:
         - Bearer: []
@@ -196,7 +196,7 @@ definitions:
         type: string
         example: User transactions retrieved succesfully
       body:
-        type: object
+        type: array
         items:
           $ref: '#/definitions/Account'
   Transaction_Response:
@@ -208,7 +208,7 @@ definitions:
         type: string
         example: User transaction retrieved succesfully
       body:
-        type: object
+        type: array
         items:
           $ref: '#/definitions/Transaction'
   Transaction_Updating_Response:
@@ -220,7 +220,7 @@ definitions:
         type: string
         example: User transaction updated succesfully
       body:
-        type: object
+        type: array
         items:
           $ref: '#/definitions/TransactionDetails'
   Transaction_Retrieve_Details_Response:
@@ -232,6 +232,6 @@ definitions:
         type: string
         example: User transaction updated succesfully
       body:
-        type: object
+        type: array
         items:
           $ref: '#/definitions/TransactionDetails'
